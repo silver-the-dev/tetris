@@ -6,9 +6,9 @@ import com.badlogic.gdx.Input;
 public class Gravity {
     public static float gravity = 5;
 
-    public static float calc(){
+    public static float calc(boolean jump){
         gravity += Gdx.graphics.getDeltaTime() * 10;
-        if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) gravity = -3;
+        if(jump) gravity = -3;
         return gravity;
     }
 }
