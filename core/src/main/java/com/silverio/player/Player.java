@@ -17,7 +17,7 @@ public class Player {
         move();
         sprite.begin(ShapeRenderer.ShapeType.Filled);
         sprite.setColor(BLUE);
-        sprite.rect(posX, posY, 100, 100);
+        sprite.rect(posX, posY, 50, 50);
         sprite.end();
     }
 

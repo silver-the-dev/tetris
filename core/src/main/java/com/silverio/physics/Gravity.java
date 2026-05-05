@@ -1,7 +1,6 @@
 package com.silverio.physics;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 
 public class Gravity {
     public static float gravity = 5;
