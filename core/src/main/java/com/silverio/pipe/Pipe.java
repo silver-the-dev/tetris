@@ -3,26 +3,30 @@ package com.silverio.pipe;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.utils.Pool;
+import java.util.Random;
 
 public class Pipe {
     private static final float screenHeight = Gdx.graphics.getHeight();
     private static final float screenWidth = Gdx.graphics.getWidth();
-    private final ShapeRenderer sprite = new ShapeRenderer();
-    private final static int gap = 100;
+    private final ShapeRenderer upperPipe = new ShapeRenderer();
+    private final ShapeRenderer lowerPipe = new ShapeRenderer();
+    private final static int gap = 200;
     private final static float width = 70;
-    private final static float height = screenHeight / 2;
-    private float positionX = screenWidth;
-    private float positionY;
+    private final Random rand = new Random(System.currentTimeMillis());
+    public final float positionY = rand.nextFloat() * (screenHeight / 2);
+    public float positionX = screenWidth /*+ (width * 3)*/ / 2;
 
 
     public void render(){
-        move();
-        sprite.begin(ShapeRenderer.ShapeType.Filled);
-        sprite.setColor(Color.GREEN);
-        sprite.rect(positionX, screenHeight, width, -height+gap);
-        sprite.rect(positionX, 0, width, height-gap);
-        sprite.end();
+//        move();
+        lowerPipe.begin(ShapeRenderer.ShapeType.Filled);
+        lowerPipe.setColor(Color.GREEN);
+        lowerPipe.rect(positionX, positionY, width, -screenHeight);
+        lowerPipe.end();
+        upperPipe.begin(ShapeRenderer.ShapeType.Filled);
+        upperPipe.setColor(Color.GREEN);
+        upperPipe.rect(positionX, positionY + gap, width, screenHeight);
+        upperPipe.end();
     }
     public void move(){
         positionX -= Gdx.graphics.getDeltaTime() * 100;
